@@ -1,6 +1,12 @@
 const webhookURL = "https://discord.com/api/webhooks/1307694339111260180/7LW13Uc4eiyEqWT_dD47uInWX6lzPv9jrvldprUb8lYslKavUyRWJ1Do_d9IqsHhbvqP";
 
 function rollDice() {
+    const playerName = document.getElementById("playerName").value.trim();
+    if (!playerName) {
+        alert("名前を入力しろ");
+        return;
+    }
+
     const diceResult = Math.floor(Math.random() * 100) + 1;
 
     const resultElement = document.getElementById("result");
@@ -10,37 +16,36 @@ function rollDice() {
     if (diceResult === 13) {
         resultElement.textContent = "あなたは死にました...!!";
         resultElement.style.color = "red";
-        message = "お前の命はここで終わりだ...運命に逆らえなかったな。";
+        message = "あなたは運命に抗うことはできなかった...。あなたは運命に抗うことはできなかった...。あなたは運命に抗うことはできなかった...。あなたは運命に抗うことはできなかった...。あなたは運命に抗うことはできなかった...。あなたは運命に抗うことはできなかった...。あなたは運命に抗うことはできなかった...。あなたは運命に抗うことはできなかった...。";
     } else if (diceResult <= 10) {
         resultElement.textContent = `ダイスの目: ${diceResult} — 不運の兆し...`;
         resultElement.style.color = "darkred";
         message = "まだお前は死ぬには早い。";
     } else if (diceResult <= 50) {
-        resultElement.textContent = `ダイスの目: ${diceResult} — あなたはギリギリ生き残った。`;
+        resultElement.textContent = `ダイスの目: ${diceResult} — 生き延びた...`;
         resultElement.style.color = "orange";
         message = "生き残るのは幸運か、それともただの偶然か...。";
     } else if (diceResult <= 80) {
-        resultElement.textContent = `ダイスの目: ${diceResult} — まずまずの結果。`;
-        resultElement.style.color = "green";
-        message = "運が味方している...。";
+        resultElement.textContent = `ダイスの目: ${diceResult} — 幸運が味方した...`;
+        resultElement.style.color = "yellowgreen";
+        message = "お前に微かな希望が与えられた。";
     } else {
-        resultElement.textContent = `ダイスの目: ${diceResult} — 幸運が味方した...しかし`;
+        resultElement.textContent = `ダイスの目: ${diceResult} — あなたは生き残った。`;
         resultElement.style.color = "limegreen";
-        message = "お前に微かな希望が与えられた。しかし、幸運は一時的だ。次はどうなるか分からない。";
+        message = "運が味方している...。";
     }
 
     messageElement.textContent = message;
-
-    sendToDiscord(diceResult, message);
+    sendToDiscord(playerName, diceResult, message);
 }
 
-// Discord
-function sendToDiscord(diceResult, message) {
+function sendToDiscord(playerName, diceResult, message) {
     const data = {
+        username: playerName,
+        avatar_url: "https://your-avatar-url.com/avatar.png",
         content: `ダイスの結果: ${diceResult} — ${message}`,
     };
 
-    // Webhook
     fetch(webhookURL, {
         method: 'POST',
         headers: {
