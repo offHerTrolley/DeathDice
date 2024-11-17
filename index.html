@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>100面ダイスゲーム</title>
+    <title>ダイスゲーム</title>
     <link rel="stylesheet" href="dice.css">
 </head>
 <body>
     <div class="container">
-        <h1>ようこそ、デスダイスへ！</h1>
-        <p>このダイスは運命を決めるかもしれません…<br>一日一回、さあ！</p>
-        <button onclick="rollDice()">ダイスを振る</button>
-        <div id="result" class="result"></div>
-        <div id="message" class="message"></div>
+        <h1>デスダイス</h1>
+        <label for="playerName">名前を入力しなさい:</label>
+        <input type="text" id="playerName" placeholder="名前">
+        <button onclick="rollDice()">振る</button>
+        
+        <div id="result"></div>
+        <div id="message"></div>
     </div>
 
     <script src="dice.js"></script>
