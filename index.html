@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dice</title>
+    <link rel="stylesheet" href="dice.css">
+</head>
+<body>
+    <div class="container">
+        <h1>The Dice</h1>
+        <label for="playerName">名前を入力しなさい:</label>
+        <input type="text" id="playerName" placeholder="名前">
+        <button onclick="rollDice()">死の賽を振る</button>
+        
+        <div id="result"></div>
+        <div id="message"></div>
+        <div id="timeRestrictionMessage"></div>
+    </div>
+
+    <script src="dice.js"></script>
+</body>
+</html>
