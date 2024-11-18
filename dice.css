@@ -84,11 +84,11 @@ button:hover {
 }
 
 .result {
-    font-size: 5rem;  /* フォントサイズをさらに大きく */
+    font-size: 5rem;
     font-weight: bold;
     margin-top: 40px;
     color: white;
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7); /* 影を強調 */
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
 }
 
 .message {
@@ -121,7 +121,7 @@ button:hover {
     }
 
     .result {
-        font-size: 4rem; /* スマホ用に調整 */
+        font-size: 4rem;
     }
 
     .message {
