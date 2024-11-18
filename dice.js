@@ -7,12 +7,10 @@ function canRollDice() {
     const currentHour = currentTime.getHours();
     const timeRestrictionMessageElement = document.getElementById("timeRestrictionMessage");
 
-    // もし前回ダイスを振った時間がある場合
     if (lastRollTime) {
         const lastRollDate = new Date(lastRollTime);
         const lastRollHour = lastRollDate.getHours();
 
-        // 午前に振ったら次は午後、午後に振ったら次は午前
         if ((lastRollHour < 12 && currentHour < 12) || (lastRollHour >= 12 && currentHour >= 12)) {
             timeRestrictionMessageElement.textContent = "すでにダイスを振りました。次は別の時間帯（午前または午後）で試してください！";
             timeRestrictionMessageElement.style.color = "red";
@@ -20,7 +18,6 @@ function canRollDice() {
         }
     }
 
-    // 午前のダイス振り（00:00〜12:00）
     if (currentHour >= 0 && currentHour < 12) {
         timeRestrictionMessageElement.textContent = "午前の時間帯です。ダイスを振れます。";
         timeRestrictionMessageElement.style.color = "white";
@@ -28,7 +25,6 @@ function canRollDice() {
         return true;
     } 
     
-    // 午後のダイス振り（12:00〜23:59）
     if (currentHour >= 12 && currentHour < 24) {
         timeRestrictionMessageElement.textContent = "午後の時間帯です。ダイスを振れます。";
         timeRestrictionMessageElement.style.color = "white";
